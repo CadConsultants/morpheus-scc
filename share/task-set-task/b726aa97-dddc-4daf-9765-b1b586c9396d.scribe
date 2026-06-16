@@ -1,0 +1,6 @@
+resource "task-set-task" "b726aa97-dddc-4daf-9765-b1b586c9396d" {
+  uuid = "b726aa97-dddc-4daf-9765-b1b586c9396d"
+  task = { code = "veeambackupdata_wa" }
+  taskOrder = 1
+  taskPhase = "operation"
+}

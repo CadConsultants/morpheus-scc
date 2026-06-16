@@ -1,0 +1,14 @@
+resource "instance-type-layout" "vapp-debian-8.8-single-6ce181ff-fbff-4563-979b-eebce1161cdf" {
+  code = "vapp-debian-8.8-single-6ce181ff-fbff-4563-979b-eebce1161cdf"
+  name = "VCD VM"
+  uuid = "1581853d-b556-4722-8a75-60a509963aeb"
+  actions = [ { code = "generic-add-node" } ]
+  description = "This will provision a single master vapp in vcloud director"
+  instanceType = { code = "sccdebian" }
+  instanceVersion = "8.8"
+  provisionType = { code = "vcd.vapp" }
+  serverType = "vm"
+  sortOrder = 8
+  supportsConvertToManaged = true
+  workloads = [ { code = "vapp-debian-8.8-set" } ]
+}

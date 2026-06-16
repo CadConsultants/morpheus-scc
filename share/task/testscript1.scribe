@@ -1,0 +1,24 @@
+resource "task" "testscript1" {
+  code = "testscript1"
+  name = "python_first_script.py"
+  uuid = "3935e53c-eac4-4878-b189-1a33fb4c3259"
+  dateCreated = "2026-04-21T12:46:10.000Z"
+  executeTarget = "local"
+  lastUpdated = "2026-06-10T16:18:54.000Z"
+  options = [
+    {
+      optionType = { code = "pythonAdditionalPackages" }
+      value = "argparse==1.4.0"
+    },
+    {
+      optionType = { code = "pythonArgs" }
+      value = "-test <%=instance.createdByUsername%>"
+    },
+    {
+      content = { uuid = "972090ca-7fa2-4280-9102-2a865616ca36" }
+      optionType = { code = "pythonScript" }
+    }
+  ]
+  resultType = "value"
+  taskType = { code = "jythonTask" }
+}

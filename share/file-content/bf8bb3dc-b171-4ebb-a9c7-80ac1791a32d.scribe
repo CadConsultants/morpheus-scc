@@ -1,0 +1,10 @@
+resource "file-content" "bf8bb3dc-b171-4ebb-a9c7-80ac1791a32d" {
+  uuid = "bf8bb3dc-b171-4ebb-a9c7-80ac1791a32d"
+  content = <<EOFSCRIBE
+$results = '<%= results %>'
+Write-Host ("Previous Script Results: `"${results}`" ...")
+
+EOFSCRIBE
+  dateCreated = "2026-04-23T11:28:46.000Z"
+  lastUpdated = "2026-04-23T13:23:11.000Z"
+}

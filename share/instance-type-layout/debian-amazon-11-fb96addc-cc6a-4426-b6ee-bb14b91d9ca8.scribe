@@ -1,0 +1,14 @@
+resource "instance-type-layout" "debian-amazon-11-fb96addc-cc6a-4426-b6ee-bb14b91d9ca8" {
+  code = "debian-amazon-11-fb96addc-cc6a-4426-b6ee-bb14b91d9ca8"
+  name = "Amazon VM"
+  uuid = "ac06bda3-7c90-4f8b-a12e-12bd444cd918"
+  actions = [ { code = "generic-add-node" } ]
+  description = "This will provision a single process with no redundancy"
+  instanceType = { code = "sccdebian" }
+  instanceVersion = "11"
+  provisionType = { code = "amazon" }
+  serverType = "vm"
+  sortOrder = 11
+  supportsConvertToManaged = true
+  workloads = [ { code = "debian-amazon-11-set" } ]
+}

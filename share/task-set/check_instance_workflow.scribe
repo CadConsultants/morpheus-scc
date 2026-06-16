@@ -1,0 +1,7 @@
+resource "task-set" "check_instance_workflow" {
+  name = "check_instance_workflow"
+  uuid = "ebe22d09-213b-4c2d-a7da-1f91ebcf7c1d"
+  dateCreated = "2026-05-14T13:11:21.000Z"
+  lastUpdated = "2026-05-14T13:16:01.000Z"
+  taskSetTasks = [ { uuid = "0a91a297-3ef3-49f2-ba1b-f163698063c2" } ]
+}

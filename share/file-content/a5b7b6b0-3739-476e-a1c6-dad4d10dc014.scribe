@@ -1,0 +1,11 @@
+resource "file-content" "a5b7b6b0-3739-476e-a1c6-dad4d10dc014" {
+  uuid = "a5b7b6b0-3739-476e-a1c6-dad4d10dc014"
+  content = <<EOFSCRIBE
+$inst_store = "<%= instance?.storage %>"
+
+# Write-Host ('{"msg": "hello"}')
+Write-Host ("Instance Storage: `"${inst_store}`" ...")
+EOFSCRIBE
+  dateCreated = "2026-04-22T09:17:08.000Z"
+  lastUpdated = "2026-04-23T13:20:18.000Z"
+}

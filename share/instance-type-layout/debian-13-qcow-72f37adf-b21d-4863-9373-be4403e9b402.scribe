@@ -1,0 +1,15 @@
+resource "instance-type-layout" "debian-13-qcow-72f37adf-b21d-4863-9373-be4403e9b402" {
+  code = "debian-13-qcow-72f37adf-b21d-4863-9373-be4403e9b402"
+  name = "Single KVM VM"
+  uuid = "5dcf41fe-7de5-4fc1-9856-6d53119c7f50"
+  actions = [ { code = "generic-add-node" } ]
+  description = "This will provision a single vm"
+  instanceType = { code = "sccdebian" }
+  instanceVersion = "13"
+  portCount = 0
+  provisionType = { code = "kvm" }
+  serverType = "vm"
+  sortOrder = 11
+  supportsConvertToManaged = true
+  workloads = [ { code = "debian-13-qcow-set" } ]
+}

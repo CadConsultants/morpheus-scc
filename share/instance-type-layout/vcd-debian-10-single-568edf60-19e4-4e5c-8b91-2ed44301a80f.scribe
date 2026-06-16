@@ -1,0 +1,14 @@
+resource "instance-type-layout" "vcd-debian-10-single-568edf60-19e4-4e5c-8b91-2ed44301a80f" {
+  code = "vcd-debian-10-single-568edf60-19e4-4e5c-8b91-2ed44301a80f"
+  name = "VCD vApp"
+  uuid = "3d02fed4-a340-4cf8-81ce-d41548d23d68"
+  actions = [ { code = "generic-add-node" } ]
+  description = "This will provision a single master vapp in vcloud director"
+  instanceType = { code = "sccdebian" }
+  instanceVersion = "10"
+  provisionType = { code = "vcd" }
+  serverType = "vm"
+  sortOrder = 30
+  supportsConvertToManaged = true
+  workloads = [ { code = "vcd-debian-10-set" } ]
+}

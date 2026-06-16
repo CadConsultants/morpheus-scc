@@ -1,0 +1,14 @@
+resource "instance-type-layout" "debian-opentelekom-12-fa2cff3d-29b2-43b9-90f7-de156447fe1b" {
+  code = "debian-opentelekom-12-fa2cff3d-29b2-43b9-90f7-de156447fe1b"
+  name = "Open Telekom Debian 12"
+  uuid = "19ee0c27-a30f-4c89-a241-76e22d0ac6db"
+  actions = [ { code = "generic-add-node" } ]
+  description = "This will provision a single process with no redundancy"
+  instanceType = { code = "sccdebian" }
+  instanceVersion = "12"
+  provisionType = { code = "opentelekom" }
+  serverType = "vm"
+  sortOrder = 12
+  supportsConvertToManaged = true
+  workloads = [ { code = "debian-opentelekom-12-set" } ]
+}

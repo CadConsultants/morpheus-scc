@@ -1,0 +1,6 @@
+resource "task-set-task" "488c1f56-1234-4aa9-8947-e1716497185a" {
+  uuid = "488c1f56-1234-4aa9-8947-e1716497185a"
+  task = { code = "testscript2" }
+  taskOrder = 1
+  taskPhase = "operation"
+}

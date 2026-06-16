@@ -1,0 +1,14 @@
+resource "instance-type-layout" "vmware-debian-12-single-8ae5cf4c-52bb-442e-b507-3d5d8cec88ea" {
+  code = "vmware-debian-12-single-8ae5cf4c-52bb-442e-b507-3d5d8cec88ea"
+  name = "VMware VM"
+  uuid = "88350610-fe81-4737-a3f9-76f14bfdb92d"
+  actions = [ { code = "generic-add-node" } ]
+  description = "This will provision a single master vm in vmware"
+  instanceType = { code = "sccdebian" }
+  instanceVersion = "12"
+  provisionType = { code = "vmware" }
+  serverType = "vm"
+  sortOrder = 12
+  supportsConvertToManaged = true
+  workloads = [ { code = "vmware-debian-12-set" } ]
+}

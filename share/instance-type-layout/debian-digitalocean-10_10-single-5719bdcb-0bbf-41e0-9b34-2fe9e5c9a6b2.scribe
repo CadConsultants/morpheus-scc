@@ -1,0 +1,16 @@
+resource "instance-type-layout" "debian-digitalocean-10.10-single-5719bdcb-0bbf-41e0-9b34-2fe9e5c9a6b2" {
+  code = "debian-digitalocean-10.10-single-5719bdcb-0bbf-41e0-9b34-2fe9e5c9a6b2"
+  name = "DigitalOcean VM"
+  uuid = "fa4f1080-1b80-44d3-8c2d-ff9ef445f771"
+  actions = [ { code = "generic-add-node" } ]
+  creatable = false
+  description = "This will provision a single vm"
+  enabled = false
+  hasAutoScale = true
+  instanceType = { code = "sccdebian" }
+  instanceVersion = "10"
+  provisionType = { code = "digitalocean" }
+  serverType = "vm"
+  sortOrder = 10
+  supportsConvertToManaged = true
+}

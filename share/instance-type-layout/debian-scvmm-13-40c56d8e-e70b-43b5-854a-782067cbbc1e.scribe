@@ -1,0 +1,14 @@
+resource "instance-type-layout" "debian-scvmm-13-40c56d8e-e70b-43b5-854a-782067cbbc1e" {
+  code = "debian-scvmm-13-40c56d8e-e70b-43b5-854a-782067cbbc1e"
+  name = "SCVMM VM"
+  uuid = "2530ec8b-022b-4ac6-972e-6e3059b24d74"
+  actions = [ { code = "generic-add-node" } ]
+  description = "This will provision a single process with no redundancy"
+  instanceType = { code = "sccdebian" }
+  instanceVersion = "13"
+  provisionType = { code = "scvmm" }
+  serverType = "vm"
+  sortOrder = 13
+  supportsConvertToManaged = true
+  workloads = [ { code = "debian-scvmm-13-set" } ]
+}

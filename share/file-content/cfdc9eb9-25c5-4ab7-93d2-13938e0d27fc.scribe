@@ -1,0 +1,39 @@
+resource "file-content" "cfdc9eb9-25c5-4ab7-93d2-13938e0d27fc" {
+  uuid = "cfdc9eb9-25c5-4ab7-93d2-13938e0d27fc"
+  content = <<EOFSCRIBE
+import json
+import requests
+import urllib3
+urllib3.disable_warnings()
+
+instId = morpheus['instance']['id']
+instTags = morpheus['instance']['tags']
+instServer = morpheus['server']['tags']
+print(instTags, instServer)
+
+url = morpheus['morpheus']['applianceUrl'] + "api/instances/" + str(instId)
+payload = {
+    "instance": {
+        "addTags": [
+            {
+                "name": "BACKUP",
+                "value": "newDefault"
+            },
+            {
+                "name": "MANAGED",
+                "value": "true"
+            }
+        ],
+        "removeTags": [{ "BACKUP": "default" }]
+    }
+}
+headers = {'Authorization': "BEARER " + morpheus['morpheus']['apiAccessToken'],
+            'Content-Type': "application/json",
+            'accept': "application/json"}
+
+response = requests.put(url, json=payload, headers=headers, verify=False)
+print(response.json()['instance']['tags'])
+EOFSCRIBE
+  dateCreated = "2026-05-14T13:11:20.000Z"
+  lastUpdated = "2026-06-15T15:52:55.000Z"
+}

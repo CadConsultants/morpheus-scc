@@ -1,0 +1,20 @@
+resource "task" "veeambackupdata" {
+  code = "veeambackupdata"
+  name = "Veeam  - Store Backup Data - return as JSON"
+  uuid = "e0b93683-fe2f-4720-9d39-dab726ea3a5f"
+  dateCreated = "2026-06-15T11:22:25.000Z"
+  executeTarget = "local"
+  lastUpdated = "2026-06-15T14:12:32.000Z"
+  options = [
+    {
+      optionType = { code = "pythonArgs" }
+      value = "<%= cypher.read(\"secret/veeam-vbr-json\") %>"
+    },
+    {
+      content = { uuid = "bf825d76-3cdc-4a98-984b-7b210a64c3eb" }
+      optionType = { code = "pythonScript" }
+    }
+  ]
+  resultType = "json"
+  taskType = { code = "jythonTask" }
+}

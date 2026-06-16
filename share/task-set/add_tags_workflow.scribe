@@ -1,0 +1,7 @@
+resource "task-set" "add_tags_workflow" {
+  name = "add_tags_workflow"
+  uuid = "ebe22d09-213b-4c2d-a7da-1f91ebcf7c1d"
+  dateCreated = "2026-05-14T13:11:21.000Z"
+  lastUpdated = "2026-05-14T13:15:26.000Z"
+  taskSetTasks = [ { uuid = "73c26499-3c7d-4869-a557-83fbcd68541e" } ]
+}

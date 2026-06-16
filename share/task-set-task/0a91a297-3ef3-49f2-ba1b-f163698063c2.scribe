@@ -1,0 +1,5 @@
+resource "task-set-task" "0a91a297-3ef3-49f2-ba1b-f163698063c2" {
+  uuid = "0a91a297-3ef3-49f2-ba1b-f163698063c2"
+  task = { name = "check_instance" }
+  taskPhase = "configure"
+}

@@ -1,0 +1,14 @@
+resource "instance-type-layout" "debian-huawei-13-bcfdb630-077f-414c-ae81-33501f3bfbc6" {
+  code = "debian-huawei-13-bcfdb630-077f-414c-ae81-33501f3bfbc6"
+  name = "Huawei Debian 13"
+  uuid = "b719d7d4-4110-4a4c-b860-0db718333454"
+  actions = [ { code = "generic-add-node" } ]
+  description = "This will provision a single process with no redundancy"
+  instanceType = { code = "sccdebian" }
+  instanceVersion = "13"
+  provisionType = { code = "huawei" }
+  serverType = "vm"
+  sortOrder = 13
+  supportsConvertToManaged = true
+  workloads = [ { code = "debian-huawei-13-set" } ]
+}

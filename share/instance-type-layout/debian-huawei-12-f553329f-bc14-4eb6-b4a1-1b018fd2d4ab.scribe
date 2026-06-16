@@ -1,0 +1,14 @@
+resource "instance-type-layout" "debian-huawei-12-f553329f-bc14-4eb6-b4a1-1b018fd2d4ab" {
+  code = "debian-huawei-12-f553329f-bc14-4eb6-b4a1-1b018fd2d4ab"
+  name = "Huawei Debian 12"
+  uuid = "1c843975-aa8e-41ce-8eb7-6437d28c8c65"
+  actions = [ { code = "generic-add-node" } ]
+  description = "This will provision a single process with no redundancy"
+  instanceType = { code = "sccdebian" }
+  instanceVersion = "12"
+  provisionType = { code = "huawei" }
+  serverType = "vm"
+  sortOrder = 12
+  supportsConvertToManaged = true
+  workloads = [ { code = "debian-huawei-12-set" } ]
+}

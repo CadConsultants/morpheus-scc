@@ -1,0 +1,8 @@
+resource "task-set" "show-vm-backup" {
+  name = "show-vm-backup"
+  uuid = "3d6e16f8-51b0-418d-823e-3983e1ae6fd9"
+  dateCreated = "2026-06-15T08:18:48.000Z"
+  lastUpdated = "2026-06-15T08:18:48.000Z"
+  taskSetTasks = [ { uuid = "57b39aa2-5d85-42f5-9799-2d7f7a2fb92a" } ]
+  taskSetType = "operation"
+}

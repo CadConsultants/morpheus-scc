@@ -1,0 +1,14 @@
+resource "instance-type-layout" "debian-nutanix-11-17edb8bf-196e-4939-bff2-d492e52813ec" {
+  code = "debian-nutanix-11-17edb8bf-196e-4939-bff2-d492e52813ec"
+  name = "Nutanix VM"
+  uuid = "2e5c36e2-393f-4873-83a9-d2901ef6d61e"
+  actions = [ { code = "generic-add-node" } ]
+  description = "This will provision a single process with no redundancy"
+  instanceType = { code = "sccdebian" }
+  instanceVersion = "11"
+  provisionType = { code = "nutanix" }
+  serverType = "vm"
+  sortOrder = 11
+  supportsConvertToManaged = true
+  workloads = [ { code = "debian-nutanix-11-set" } ]
+}

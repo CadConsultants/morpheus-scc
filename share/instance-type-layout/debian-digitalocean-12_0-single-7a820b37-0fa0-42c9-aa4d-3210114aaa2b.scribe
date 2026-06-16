@@ -1,0 +1,15 @@
+resource "instance-type-layout" "debian-digitalocean-12.0-single-7a820b37-0fa0-42c9-aa4d-3210114aaa2b" {
+  code = "debian-digitalocean-12.0-single-7a820b37-0fa0-42c9-aa4d-3210114aaa2b"
+  name = "DigitalOcean VM"
+  uuid = "0b358597-c427-4c4b-9cbc-b944ecbb70b3"
+  actions = [ { code = "generic-add-node" } ]
+  description = "This will provision a single vm"
+  hasAutoScale = true
+  instanceType = { code = "sccdebian" }
+  instanceVersion = "12"
+  provisionType = { code = "digitalocean" }
+  serverType = "vm"
+  sortOrder = 12
+  supportsConvertToManaged = true
+  workloads = [ { code = "debian-digitalocean-12.0-set" } ]
+}

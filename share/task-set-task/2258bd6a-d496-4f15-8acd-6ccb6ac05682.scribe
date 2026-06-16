@@ -1,0 +1,4 @@
+resource "task-set-task" "2258bd6a-d496-4f15-8acd-6ccb6ac05682" {
+  uuid = "2258bd6a-d496-4f15-8acd-6ccb6ac05682"
+  task = { code = "fortigate-initial-hardening-ansible" }
+}

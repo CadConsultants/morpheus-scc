@@ -1,0 +1,11 @@
+resource "task-set" "test_workflow_var" {
+  name = "test_workflow_var"
+  uuid = "c0a9cf6a-6bac-4ec8-a133-532d6c16288a"
+  dateCreated = "2026-04-21T17:10:18.000Z"
+  lastUpdated = "2026-04-21T17:10:18.000Z"
+  taskSetTasks = [
+    { uuid = "488c1f56-1234-4aa9-8947-e1716497185a" },
+    { uuid = "a916b7ad-e31f-4d56-b845-6f7d2e0a7077" }
+  ]
+  taskSetType = "operation"
+}

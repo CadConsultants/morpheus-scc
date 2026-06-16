@@ -1,0 +1,14 @@
+resource "instance-type-layout" "debian-openstack-11-f91c93c5-f9cd-4dd8-8000-9a589b8e9f0e" {
+  code = "debian-openstack-11-f91c93c5-f9cd-4dd8-8000-9a589b8e9f0e"
+  name = "OpenStack VM"
+  uuid = "32cb9947-aede-40f3-b3b0-e8b7c7db3c3e"
+  actions = [ { code = "generic-add-node" } ]
+  description = "This will provision a single process with no redundancy"
+  instanceType = { code = "sccdebian" }
+  instanceVersion = "11"
+  provisionType = { code = "openstack" }
+  serverType = "vm"
+  sortOrder = 11
+  supportsConvertToManaged = true
+  workloads = [ { code = "debian-openstack-11-set" } ]
+}

@@ -1,0 +1,7 @@
+resource "task-set" "FortiGate Git Ansible Workflow" {
+  name = "FortiGate Git Ansible Workflow"
+  uuid = "15a9c97b-0f68-4e6d-90d5-33d73516a575"
+  dateCreated = "2026-06-09T13:19:13.000Z"
+  lastUpdated = "2026-06-09T13:19:13.000Z"
+  taskSetTasks = [ { uuid = "2258bd6a-d496-4f15-8acd-6ccb6ac05682" } ]
+}

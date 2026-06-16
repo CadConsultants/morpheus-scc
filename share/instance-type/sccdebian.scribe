@@ -1,0 +1,83 @@
+resource "instance-type" "sccdebian" {
+  code = "sccdebian"
+  name = "SCC Debian"
+  uuid = "c241f95a-74cc-4577-990e-1c76f407340f"
+  category = "os"
+  deploymentService = "defaultDeployService"
+  description = "A popular Linux flavor operating system. Easily provision Debian vms for various cloud platforms"
+  environmentPrefix = "DEBIAN"
+  hasAutoScale = true
+  hasDeployment = true
+  hasSettings = true
+  layouts = [
+    { code = "ce0b545b-2266-4c66-b450-013a81426051" },
+    { code = "debian-11-qcow-bd2cde00-e4e3-471b-b9a9-b6f4479f36c6" },
+    { code = "debian-12-qcow-de406dd0-5234-4eb5-ae18-e6adf10ac888" },
+    { code = "debian-13-qcow-72f37adf-b21d-4863-9373-be4403e9b402" },
+    { code = "debian-amazon-11-fb96addc-cc6a-4426-b6ee-bb14b91d9ca8" },
+    { code = "debian-amazon-12-f493721a-2161-4a5c-91eb-3217d6833172" },
+    { code = "debian-azure-11-27963286-9798-4bff-b17b-657994b23a43" },
+    { code = "debian-azure-12-f16511c6-8ca4-4c58-95bd-da393e37b082" },
+    {
+      code = "debian-digitalocean-10.10-single-5719bdcb-0bbf-41e0-9b34-2fe9e5c9a6b2"
+    },
+    {
+      code = "debian-digitalocean-11.0-single-d319bbed-59d8-4459-819d-336d60ab788c"
+    },
+    {
+      code = "debian-digitalocean-12.0-single-7a820b37-0fa0-42c9-aa4d-3210114aaa2b"
+    },
+    {
+      code = "debian-digitalocean-9.13-single-37f17343-98da-42a0-8a18-7d0c48092a5a"
+    },
+    { code = "debian-huawei-11-e2f25c7e-4e0b-4088-bf65-e93b59d39f4a" },
+    { code = "debian-huawei-12-f553329f-bc14-4eb6-b4a1-1b018fd2d4ab" },
+    { code = "debian-huawei-13-bcfdb630-077f-414c-ae81-33501f3bfbc6" },
+    { code = "debian-hyperv-11-861c5a2c-beb4-49e3-891a-594cff4223e3" },
+    { code = "debian-hyperv-12-839c01e8-74ad-4c8b-9cb7-5107ad5eb704" },
+    { code = "debian-hyperv-13-d35c6aac-e986-4a88-b21f-6735ed06beb2" },
+    { code = "debian-nutanix-11-17edb8bf-196e-4939-bff2-d492e52813ec" },
+    { code = "debian-nutanix-12-d4cedf0b-62e5-4fce-a784-3199c7fb9120" },
+    { code = "debian-openstack-11-f91c93c5-f9cd-4dd8-8000-9a589b8e9f0e" },
+    { code = "debian-openstack-12-7504f88c-985d-4efb-8927-98025b3e00eb" },
+    { code = "debian-openstack-13-86ed810c-6330-4f3c-8c4f-39ac3b067852" },
+    {
+      code = "debian-opentelekom-11-c6b12d82-2315-46fe-8643-7ab07e64eae3"
+    },
+    {
+      code = "debian-opentelekom-12-fa2cff3d-29b2-43b9-90f7-de156447fe1b"
+    },
+    {
+      code = "debian-opentelekom-13-5f32f127-ca06-434a-ab55-14df59b4ae49"
+    },
+    { code = "debian-scvmm-11-9a7c9c54-1b6b-4a90-9e23-69dc5c1e944c" },
+    { code = "debian-scvmm-12-61680aaf-da63-4ab2-9514-f76989443c19" },
+    { code = "debian-scvmm-13-40c56d8e-e70b-43b5-854a-782067cbbc1e" },
+    {
+      code = "esxi-debian-11-single-3341344d-72e1-4b74-a346-a2c7bf643fc2"
+    },
+    {
+      code = "esxi-debian-12-single-e4f16688-82f8-4a6b-a8bd-4ee0285f3c15"
+    },
+    {
+      code = "esxi-debian-13-single-49c87a85-4e98-4bcf-b1a5-170642cbf633"
+    },
+    {
+      code = "vapp-debian-8.8-single-6ce181ff-fbff-4563-979b-eebce1161cdf"
+    },
+    { code = "vcd-debian-10-single-568edf60-19e4-4e5c-8b91-2ed44301a80f" },
+    { code = "vcd-debian-11-single-5dbeaab4-9458-4485-a917-137482f1a0b3" },
+    {
+      code = "vcd-debian-8.8-single-03df6d4c-0e4f-4e32-8a13-efbd7d6e96a6"
+    },
+    {
+      code = "vmware-debian-11-single-d104c1c9-1ef6-4280-aa68-f97bf1140b59"
+    },
+    {
+      code = "vmware-debian-12-single-8ae5cf4c-52bb-442e-b507-3d5d8cec88ea"
+    },
+    {
+      code = "vmware-debian-13-single-27918482-3c95-426c-8e4d-23a60e1a71c4"
+    }
+  ]
+}

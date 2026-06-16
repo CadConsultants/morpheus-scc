@@ -1,0 +1,12 @@
+resource "task-set" "Veeam - Add current backup data to Instance" {
+  name = "Veeam - Add current backup data to Instance"
+  uuid = "613c618e-fae5-4c7c-847d-8aedb6221664"
+  dateCreated = "2026-06-15T11:50:33.000Z"
+  description = "Stores output from VBR API call to Instance metadata."
+  lastUpdated = "2026-06-15T14:16:53.000Z"
+  taskSetTasks = [
+    { uuid = "13c9ab3f-b265-4f83-9d78-d60ccf2ed2c5" },
+    { uuid = "b726aa97-dddc-4daf-9765-b1b586c9396d" }
+  ]
+  taskSetType = "operation"
+}

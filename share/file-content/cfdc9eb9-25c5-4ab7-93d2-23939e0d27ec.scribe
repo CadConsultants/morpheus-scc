@@ -1,0 +1,33 @@
+resource "file-content" "cfdc9eb9-25c5-4ab7-93d2-23939e0d27ec" {
+  uuid = "cfdc9eb9-25c5-4ab7-93d2-23939e0d27ec"
+  content = <<EOFSCRIBE
+import re
+import sys
+
+instanceName = morpheus['spec']['computedHostName']
+regex = r'^[a-zA-Z0-9]{8}[0-9]{3}$'
+
+# check if instanceName does not match the regex
+try:
+    if not re.match(regex, instanceName):
+        msg = "Instance name " + instanceName + " does not match the required format"
+        raise Exception(msg)
+except Exception as e:
+    sys.stderr.write("Error: " + str(e))
+    sys.exit(1)
+
+# First disk size
+diskSize = morpheus['spec']['volumes'][0]['size']
+minDiskSize = 80
+
+try:
+    if diskSize < minDiskSize:
+        msg = "Disk size " + str(diskSize) + " is too small"
+        raise Exception(msg)
+except Exception as e:
+    sys.stderr.write("Error: " + str(e))
+    sys.exit(1)
+EOFSCRIBE
+  dateCreated = "2026-05-14T13:11:20.000Z"
+  lastUpdated = "2026-05-14T13:14:07.000Z"
+}

@@ -1,0 +1,9 @@
+resource "instance-type" "fortigate-firewall" {
+  code = "fortigate-firewall"
+  name = "FortiGate Firewall"
+  uuid = "dbd98d12-791e-4af7-918d-038db1db1063"
+  category = "network"
+  deploymentService = ""
+  environmentPrefix = "FORTIGATE_FIREWALL"
+  layouts = [ { code = "8638ddc8-0c11-40bb-8b6a-a17ca2c94858" } ]
+}

@@ -1,0 +1,12 @@
+resource "task-set" "test_ps_workflow" {
+  name = "test_ps_workflow"
+  uuid = "6dcbc142-b4d9-4d2f-944a-4e3f5982f602"
+  allowCustomConfig = true
+  dateCreated = "2026-04-22T15:44:31.000Z"
+  lastUpdated = "2026-04-23T11:30:21.000Z"
+  taskSetTasks = [
+    { uuid = "eb315e22-a073-488a-af9b-5eb8614210d6" },
+    { uuid = "ecbc6273-1be2-40b6-9b81-a417c917fafb" }
+  ]
+  taskSetType = "operation"
+}

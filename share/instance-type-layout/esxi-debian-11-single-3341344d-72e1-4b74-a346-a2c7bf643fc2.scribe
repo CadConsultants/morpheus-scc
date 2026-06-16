@@ -1,0 +1,14 @@
+resource "instance-type-layout" "esxi-debian-11-single-3341344d-72e1-4b74-a346-a2c7bf643fc2" {
+  code = "esxi-debian-11-single-3341344d-72e1-4b74-a346-a2c7bf643fc2"
+  name = "ESXi VM"
+  uuid = "50e408f7-8808-40d3-8635-23d0620110c0"
+  actions = [ { code = "generic-add-node" } ]
+  description = "This will provision a single master vm in ESXi"
+  instanceType = { code = "sccdebian" }
+  instanceVersion = "11"
+  provisionType = { code = "esxi" }
+  serverType = "vm"
+  sortOrder = 11
+  supportsConvertToManaged = true
+  workloads = [ { code = "esxi-debian-11-set" } ]
+}

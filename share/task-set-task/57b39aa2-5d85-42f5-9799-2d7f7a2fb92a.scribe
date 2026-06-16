@@ -1,0 +1,5 @@
+resource "task-set-task" "57b39aa2-5d85-42f5-9799-2d7f7a2fb92a" {
+  uuid = "57b39aa2-5d85-42f5-9799-2d7f7a2fb92a"
+  task = { code = "veeam_search_script" }
+  taskPhase = "operation"
+}

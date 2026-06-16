@@ -1,0 +1,14 @@
+resource "instance-type-layout" "debian-hyperv-11-861c5a2c-beb4-49e3-891a-594cff4223e3" {
+  code = "debian-hyperv-11-861c5a2c-beb4-49e3-891a-594cff4223e3"
+  name = "Hyper-V VM"
+  uuid = "3be89a85-04c8-422f-9883-4e647252e091"
+  actions = [ { code = "generic-add-node" } ]
+  description = "This will provision a single process with no redundancy"
+  instanceType = { code = "sccdebian" }
+  instanceVersion = "11"
+  provisionType = { code = "hyperv" }
+  serverType = "vm"
+  sortOrder = 11
+  supportsConvertToManaged = true
+  workloads = [ { code = "debian-hyperv-11-set" } ]
+}

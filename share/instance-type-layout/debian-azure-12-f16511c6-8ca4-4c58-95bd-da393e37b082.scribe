@@ -1,0 +1,14 @@
+resource "instance-type-layout" "debian-azure-12-f16511c6-8ca4-4c58-95bd-da393e37b082" {
+  code = "debian-azure-12-f16511c6-8ca4-4c58-95bd-da393e37b082"
+  name = "Azure VM"
+  uuid = "c322479e-afdf-4c6e-945d-7cc8fc976a60"
+  actions = [ { code = "generic-add-node" } ]
+  description = "This will provision a single process with no redundancy"
+  instanceType = { code = "sccdebian" }
+  instanceVersion = "12"
+  provisionType = { code = "azure" }
+  serverType = "vm"
+  sortOrder = 12
+  supportsConvertToManaged = true
+  workloads = [ { code = "debian-azure-12-set" } ]
+}

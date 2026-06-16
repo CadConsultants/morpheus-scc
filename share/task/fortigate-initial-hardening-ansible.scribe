@@ -1,0 +1,19 @@
+resource "task" "fortigate-initial-hardening-ansible" {
+  code = "fortigate-initial-hardening-ansible"
+  name = "FortiGate Initial Hardening (Ansible)"
+  uuid = "dfc4fd07-e8b1-4b05-980e-0c141db7f994"
+  dateCreated = "2026-06-09T13:16:27.000Z"
+  executeTarget = "resource"
+  lastUpdated = "2026-06-12T11:04:29.000Z"
+  options = [
+    {
+      optionType = { code = "ansibleGitId" }
+      value = { name = "ansible-ssh" }
+    },
+    {
+      optionType = { code = "ansiblePlaybook" }
+      value = "fgt_cust_hardening.yml"
+    }
+  ]
+  taskType = { code = "ansibleTask" }
+}

@@ -1,0 +1,19 @@
+resource "task" "veeambackupdata_wa" {
+  code = "veeambackupdata_wa"
+  name = "Veeam - Backup Data - store with Instance"
+  uuid = "e02c86c8-97f7-4788-848e-c664a600fda7"
+  dateCreated = "2026-06-15T11:49:51.000Z"
+  executeTarget = "local"
+  lastUpdated = "2026-06-15T14:13:20.000Z"
+  options = [
+    {
+      optionType = { code = "writeAttributes.attributes" }
+      value = <<EOFSCRIBE
+{
+"veeamBackupdata": <%=results.veeambackupdata?.encodeAsJSON()%>
+}
+EOFSCRIBE
+    }
+  ]
+  taskType = { code = "writeAttributes" }
+}

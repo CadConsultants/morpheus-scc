@@ -1,0 +1,21 @@
+resource "file-content" "972090ca-7fa2-4280-9102-2a865616ca36" {
+  uuid = "972090ca-7fa2-4280-9102-2a865616ca36"
+  content = <<EOFSCRIBE
+import argparse
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Testing.")
+    parser.add_argument('-test')
+    return parser.parse_args()
+
+args = parse_args()
+if args.test:
+    print(args.test)
+
+exit()
+
+
+EOFSCRIBE
+  dateCreated = "2026-04-21T12:46:11.000Z"
+  lastUpdated = "2026-04-21T17:05:29.000Z"
+}

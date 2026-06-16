@@ -1,0 +1,19 @@
+resource "task" "add_tags" {
+  name = "add_tags"
+  uuid = "20850cdf-051c-4b89-8a2b-5f3f9699eae7"
+  dateCreated = "2026-05-14T13:11:21.000Z"
+  executeTarget = "local"
+  lastUpdated = "2026-05-14T15:23:30.000Z"
+  options = [
+    {
+      optionType = { code = "pythonAdditionalPackages" }
+      value = "requests"
+    },
+    {
+      content = { uuid = "cfdc9eb9-25c5-4ab7-93d2-13938e0d27fc" }
+      optionType = { code = "pythonScript" }
+    }
+  ]
+  resultType = "json"
+  taskType = { code = "jythonTask" }
+}

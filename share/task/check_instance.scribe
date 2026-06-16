@@ -1,0 +1,15 @@
+resource "task" "check_instance" {
+  name = "check_instance"
+  uuid = "8930d783-d419-45cd-8e00-3e5b2cb016b7"
+  dateCreated = "2026-05-14T13:11:21.000Z"
+  executeTarget = "local"
+  lastUpdated = "2026-05-14T13:14:07.000Z"
+  options = [
+    {
+      content = { uuid = "cfdc9eb9-25c5-4ab7-93d2-23939e0d27ec" }
+      optionType = { code = "pythonScript" }
+    }
+  ]
+  resultType = "json"
+  taskType = { code = "jythonTask" }
+}

@@ -1,0 +1,11 @@
+resource "instance-type-layout" "8638ddc8-0c11-40bb-8b6a-a17ca2c94858" {
+  code = "8638ddc8-0c11-40bb-8b6a-a17ca2c94858"
+  name = "FortiGate KVM Deployment"
+  uuid = "f4941ebe-ebae-4bc6-b725-3d2f7c31e756"
+  instanceType = { code = "fortigate-firewall" }
+  instanceVersion = "7.6.6"
+  memoryRequirement = 0
+  provisionType = { code = "kvm" }
+  taskSets = [ { name = "FortiGate Git Ansible Workflow" } ]
+  workloads = [ { code = "e2f0715a-9bb4-497e-88d0-38d9a16dd2a5" } ]
+}

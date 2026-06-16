@@ -1,0 +1,20 @@
+resource "task" "testingpsscript2" {
+  code = "testingpsscript2"
+  name = "powershell_second_script.ps1"
+  uuid = "94dae505-8215-4956-ba1e-ce79c6d1e7c2"
+  dateCreated = "2026-04-23T11:28:46.000Z"
+  executeTarget = "resource"
+  lastUpdated = "2026-04-23T13:23:11.000Z"
+  options = [
+    {
+      optionType = { code = "winrm.powershellVersion" }
+      value = "5.0"
+    },
+    {
+      content = { uuid = "bf8bb3dc-b171-4ebb-a9c7-80ac1791a32d" }
+      optionType = { code = "script" }
+    }
+  ]
+  resultType = "value"
+  taskType = { code = "winrmTask" }
+}

@@ -1,0 +1,206 @@
+resource "file-content" "bf825d76-3cdc-4a98-984b-7b210a64c3eb" {
+  uuid = "bf825d76-3cdc-4a98-984b-7b210a64c3eb"
+  content = <<EOFSCRIBE
+#!/usr/bin/env python3
+"""
+Single-instance Veeam backup status
+
+Runs as a Morpheus task in a tenant's context. For the ONE instance it runs
+on, it:
+  1. reads the instance name + uuid + tenant (from Morpheus context / whoami)
+  2. queries Veeam VBR REST for VME (CustomPlatform) backup objects
+  3. finds THIS instance's backup object by name
+  4. reports protection status, restore points, last result, with tenant tag
+
+Veeam returns ALL tenants' VME objects (it has no tenant concept), so we
+filter to the single object whose name matches this instance.
+
+"""
+import sys, ssl, json, urllib.request, urllib.parse, urllib.error
+from datetime import datetime, timezone
+
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
+VBR_JSON = sys.argv[1] if len(sys.argv) > 1 else None
+if not VBR_JSON:
+    print("ERROR: VBR JSON config not provided as first argument", file=sys.stderr)
+    exit(1)
+
+def parse_vbr_config(raw_config):
+    """Parse VBR config from JSON or Morpheus-style pipe-delimited pseudo-JSON."""
+    raw = (raw_config or "").strip()
+    if not raw:
+        raise ValueError("empty VBR config")
+
+    try:
+        cfg = json.loads(raw)
+    except json.JSONDecodeError:
+        # Converting pipe wrappers to JSON quotes yields valid JSON.
+        normalized = raw.replace("|", '"')
+        cfg = json.loads(normalized)
+
+    if not isinstance(cfg, dict):
+        raise ValueError("VBR config must deserialize to an object/dict")
+    return cfg
+
+try:
+    _vbr_cfg = parse_vbr_config(VBR_JSON)
+except Exception as e:
+    print(f"ERROR: Invalid VBR JSON config: {e}", file=sys.stderr)
+    exit(1)
+
+VBR_HOST = _vbr_cfg.get("vbr_host")
+VBR_PORT = int(_vbr_cfg.get("vbr_port", 9419))
+VBR_VER = _vbr_cfg.get("vbr_version", "1.3-rev1")
+VBR_USERNAME = _vbr_cfg.get("vbr_username")
+VBR_PASSWORD = _vbr_cfg.get("vbr_password")
+TIMEOUT = int(_vbr_cfg.get("vbr_api_timeout", 30))
+
+if not all([VBR_HOST, VBR_USERNAME, VBR_PASSWORD]):
+    print("ERROR: VBR config missing required fields: vbr_host, vbr_username, vbr_password", file=sys.stderr)
+    exit(1)
+
+
+def _now():
+    return datetime.now(timezone.utc).isoformat()
+
+
+# --- Morpheus context ------------------------------------------------------
+def morpheus_context():
+    """Return Morpheus context object and required auth fields."""
+    g = globals()
+    if "morpheus" not in g:
+        raise RuntimeError("no Morpheus context (run as a Morpheus task)")
+    m = g["morpheus"]
+    token = m["morpheus"]["apiAccessToken"]
+    appliance = m["morpheus"]["applianceUrl"].rstrip("/")
+    return m, token, appliance
+
+
+def morpheus_identity():
+    """Pull this instance's identity + tenant from the injected context."""
+    m, token, appliance = morpheus_context()
+
+    instance_name = str(m["instance"]["name"])
+    instance_id = m["instance"].get("id")
+    
+    instance_uuid = m["instance"].get("uuid")
+    if not instance_uuid:
+        try:
+            instance_uuid = m["instance"]["containers"][0]["server"]["uuid"]
+        except (KeyError, IndexError, TypeError):
+            instance_uuid = None
+
+    req = urllib.request.Request(f"{appliance}/api/whoami",
+        headers={"Authorization": f"Bearer {token}", "Accept": "application/json"})
+    with urllib.request.urlopen(req, context=ctx, timeout=TIMEOUT) as r:
+        who = json.loads(r.read())
+    tenant_id = who.get("user", {}).get("accountId")
+    tenant_name = (who.get("user", {}).get("account") or {}).get("name")
+
+    return {
+        "instanceId": instance_id,
+        "instanceName": instance_name,
+        "instanceUuid": instance_uuid,
+        "tenantId": tenant_id,
+        "tenantName": tenant_name,
+    }
+
+
+def vbr_token():
+    body = urllib.parse.urlencode({"grant_type": "password",
+        "username": VBR_USERNAME, "password": VBR_PASSWORD}).encode()
+    req = urllib.request.Request(f"https://{VBR_HOST}:{VBR_PORT}/api/oauth2/token",
+        data=body, method="POST",
+        headers={"x-api-version": VBR_VER,
+                 "Content-Type": "application/x-www-form-urlencoded",
+                 "Accept": "application/json"})
+    with urllib.request.urlopen(req, context=ctx, timeout=TIMEOUT) as r:
+        return json.loads(r.read())["access_token"]
+
+
+def vbr_find_object_by_name(tok, target_name):
+    """Page through backupObjects, return the VME object matching target_name.
+    Returns (match_or_None, name_match_count) so caller can detect the rare
+    case of the same name existing more than once across tenants."""
+    skip, page, total = 0, 200, None
+    matches = []
+    while True:
+        url = (f"https://{VBR_HOST}:{VBR_PORT}/api/v1/backupObjects"
+               f"?skip={skip}&limit={page}")
+        req = urllib.request.Request(url,
+            headers={"x-api-version": VBR_VER, "Accept": "application/json",
+                     "Authorization": f"Bearer {tok}"})
+        with urllib.request.urlopen(req, context=ctx, timeout=TIMEOUT) as r:
+            d = json.loads(r.read())
+        data = d.get("data", [])
+        if total is None:
+            total = d.get("pagination", {}).get("total", len(data))
+        for o in data:
+            pname = o.get("platformName") or o.get("platform")
+            if pname == "CustomPlatform" and o.get("name") == target_name:
+                matches.append(o)
+        skip += len(data)
+        if not data or skip >= (total or 0):
+            break
+    return matches
+
+
+def main():
+    result = {"checked_at": _now(), "ok": False}
+
+    try:
+        ident = morpheus_identity()
+    except Exception as e:
+        print(f"FAIL Morpheus identity: {e}", file=sys.stderr)
+        sys.stdout.write(json.dumps(result) + "\n"); sys.exit(1)
+    result.update(ident)
+    
+    try:
+        tok = vbr_token()
+        matches = vbr_find_object_by_name(tok, ident["instanceName"])
+    except Exception as e:
+        print(f"FAIL Veeam: {e}", file=sys.stderr)
+        sys.stdout.write(json.dumps(result) + "\n"); sys.exit(1)
+
+    result["ok"] = True
+
+    if not matches:
+        result["protected"] = False
+        result["backup"] = None
+        result["note"] = "No Veeam VME backup object found for this instance name."
+    elif len(matches) == 1:
+        o = matches[0]
+        result["protected"] = True
+        result["backup"] = {
+            "veeamId": o.get("id"),
+            "platformId": o.get("platformId"),
+            "restorePointsCount": o.get("restorePointsCount"),
+            "lastRunFailed": o.get("lastRunFailed"),
+        }
+    else:
+        result["protected"] = True
+        result["ambiguous"] = True
+        result["note"] = ("Multiple Veeam objects share this name across the "
+                          "VBR; disambiguate via uuid if needed.")
+        result["backup_candidates"] = [{
+            "veeamId": o.get("id"),
+            "platformId": o.get("platformId"),
+            "restorePointsCount": o.get("restorePointsCount"),
+            "lastRunFailed": o.get("lastRunFailed"),
+        } for o in matches]
+
+    # Morpheus expects machine-readable JSON on stdout.
+    sys.stdout.write(json.dumps(result, default=str) + "\n")
+    sys.stdout.flush()
+
+    sys.exit(0)
+
+if __name__ == "__main__":
+    main()
+EOFSCRIBE
+  dateCreated = "2026-06-15T11:22:25.000Z"
+  lastUpdated = "2026-06-15T13:39:09.000Z"
+}

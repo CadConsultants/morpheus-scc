@@ -1,0 +1,5 @@
+resource "task-set-task" "eb315e22-a073-488a-af9b-5eb8614210d6" {
+  uuid = "eb315e22-a073-488a-af9b-5eb8614210d6"
+  task = { code = "testingpsscript1" }
+  taskPhase = "operation"
+}

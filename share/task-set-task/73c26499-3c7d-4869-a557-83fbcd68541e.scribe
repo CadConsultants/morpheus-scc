@@ -1,0 +1,5 @@
+resource "task-set-task" "73c26499-3c7d-4869-a557-83fbcd68541e" {
+  uuid = "73c26499-3c7d-4869-a557-83fbcd68541e"
+  task = { name = "add_tags" }
+  taskPhase = "configure"
+}
