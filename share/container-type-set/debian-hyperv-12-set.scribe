@@ -1,0 +1,6 @@
+resource "container-type-set" "debian-hyperv-12-set" {
+  code = "debian-hyperv-12-set"
+  uuid = "6256c8be-f628-4ceb-869c-8ec10bc5a8bc"
+  dynamicCount = true
+  workloadType = { code = "debian-hyperv-12" }
+}

@@ -1,0 +1,18 @@
+resource "container-type" "debian-amazon-12" {
+  code = "debian-amazon-12"
+  name = "Debian 12"
+  uuid = "2ada7cf3-1529-42cd-bd98-9e481071c358"
+  actions = [ { code = "generic-remove-node" } ]
+  backupType = "amazonSnapshot"
+  checkTypeCode = "containerCheck"
+  containerPorts = [ { code = "debian.22" } ]
+  containerVersion = "12"
+  logTypeCode = "debian"
+  mountPoint = "/morpheus"
+  osType = { code = "debian.12.64" }
+  provisionType = { code = "amazon" }
+  serverType = "vm"
+  shortName = "debian"
+  showServerLogs = true
+  statTypeCode = "vm"
+}

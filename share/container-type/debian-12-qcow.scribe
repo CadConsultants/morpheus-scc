@@ -1,0 +1,18 @@
+resource "container-type" "debian-12-qcow" {
+  code = "debian-12-qcow"
+  name = "Debian 12"
+  uuid = "040675fb-5cd5-4450-b473-2d2c310d90e3"
+  actions = [ { code = "generic-remove-node" } ]
+  backupType = "kvm"
+  checkTypeCode = "containerCheck"
+  containerPorts = [ { code = "debian.22" } ]
+  containerVersion = "12"
+  logTypeCode = "debian"
+  mountPoint = "/morpheus"
+  osType = { code = "debian.12.64" }
+  provisionType = { code = "kvm" }
+  serverType = "vm"
+  shortName = "debian"
+  showServerLogs = true
+  statTypeCode = "vm"
+}

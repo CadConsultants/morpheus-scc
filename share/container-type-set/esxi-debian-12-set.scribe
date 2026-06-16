@@ -1,0 +1,7 @@
+resource "container-type-set" "esxi-debian-12-set" {
+  code = "esxi-debian-12-set"
+  uuid = "9b440396-ca1a-4e52-8089-bf7e68bb2af6"
+  category = "debian"
+  dynamicCount = true
+  workloadType = { code = "esxi-debian-12" }
+}

@@ -1,0 +1,7 @@
+resource "container-type-set" "vmware-debian-13-set" {
+  code = "vmware-debian-13-set"
+  uuid = "6241ee4e-81ac-406c-80ea-063aa406c71b"
+  category = "debian"
+  dynamicCount = true
+  workloadType = { code = "vmware-debian-13" }
+}

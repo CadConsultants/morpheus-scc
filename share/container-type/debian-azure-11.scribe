@@ -1,0 +1,18 @@
+resource "container-type" "debian-azure-11" {
+  code = "debian-azure-11"
+  name = "Debian 11"
+  uuid = "354b385e-a8b9-4c37-b75d-62babe7d07be"
+  actions = [ { code = "generic-remove-node" } ]
+  backupType = "azureSnapshot"
+  checkTypeCode = "containerCheck"
+  containerPorts = [ { code = "debian.22" } ]
+  containerVersion = "11"
+  logTypeCode = "debian"
+  mountPoint = "/morpheus"
+  osType = { code = "debian.11.64" }
+  provisionType = { code = "azure" }
+  serverType = "vm"
+  shortName = "debian"
+  showServerLogs = true
+  statTypeCode = "vm"
+}

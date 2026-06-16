@@ -1,0 +1,54 @@
+resource "container-template" "046f33a2-38cf-47cd-96d8-8a15bbaebbd2" {
+  code = "046f33a2-38cf-47cd-96d8-8a15bbaebbd2"
+  name = "FortiGate-Initial-Hardening"
+  uuid = "e77ba168-a10d-4266-ae91-88361fa18354"
+  dateCreated = "2026-06-09T08:59:23.000Z"
+  fileName = "user-data"
+  lastUpdated = "2026-06-09T08:59:23.000Z"
+  template = <<EOFSCRIBE
+#config
+config system global
+    set hostname <%= server.name %>
+    set pre-login-banner "WARNING: Authorized access to <%= server.name %> is prohibited!"
+    set post-login-banner "Welcome to the Corporate Network. All activities are logged."
+    set timezone 12
+end
+
+config system ntp
+    set ntpsync enable
+    set type custom
+    config ntpserver
+        edit 1
+            set server "10.10.10.5"
+        next
+        edit 2
+            set server "10.10.10.6"
+        next
+    end
+end
+
+config system syslogd setting
+    set status enable
+    set server "10.10.20.50"
+    set mode udp
+    set facility local7
+end
+
+config system snmp sysinfo
+    set status enable
+    set description "Morpheus Managed FortiGate KVM"
+    set contact-info "network-ops@company.com"
+end
+
+config system snmp community
+    edit 1
+        set name "v2c-read-community"
+        config hosts
+            edit 1
+                set ip 10.10.20.100 255.255.255.255
+            next
+        end
+    next
+end
+EOFSCRIBE
+}

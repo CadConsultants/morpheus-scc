@@ -1,0 +1,7 @@
+resource "container-type-set" "debian-digitalocean-11.0-set" {
+  code = "debian-digitalocean-11.0-set"
+  uuid = "6d87ffae-393c-4b0c-b9cb-2cbada567c6b"
+  category = "debian"
+  dynamicCount = true
+  workloadType = { code = "debian-digitalocean-11.0" }
+}

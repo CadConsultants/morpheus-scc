@@ -1,0 +1,18 @@
+resource "container-type" "debian-openstack-13" {
+  code = "debian-openstack-13"
+  name = "Debian 13"
+  uuid = "5f5b9b20-db58-45cd-b661-d70b7a0ec3e8"
+  actions = [ { code = "generic-remove-node" } ]
+  backupType = "openstackSnapshot"
+  checkTypeCode = "containerCheck"
+  containerPorts = [ { code = "debian.22" } ]
+  containerVersion = "13"
+  logTypeCode = "debian"
+  mountPoint = "/morpheus"
+  osType = { code = "debian.13.64" }
+  provisionType = { code = "openstack" }
+  serverType = "vm"
+  shortName = "debian"
+  showServerLogs = true
+  statTypeCode = "vm"
+}

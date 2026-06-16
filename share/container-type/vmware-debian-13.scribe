@@ -1,0 +1,22 @@
+resource "container-type" "vmware-debian-13" {
+  code = "vmware-debian-13"
+  name = "Debian 13"
+  uuid = "01043a0f-71fd-4cbf-9bcf-b22f7aef77a4"
+  category = "debian"
+  actions = [ { code = "generic-remove-node" } ]
+  backupType = "vmwareSnapshot"
+  checkTypeCode = "containerCheck"
+  cloneType = "debian"
+  containerPorts = [ { code = "debian.22" } ]
+  containerVersion = "13"
+  imageCode = "morpheus debian 13"
+  logTypeCode = "debian"
+  mountLogs = "/var/log"
+  osType = { code = "debian.13.64" }
+  providerType = "vmware"
+  provisionType = { code = "vmware" }
+  serverType = "vm"
+  shortName = "debian"
+  showServerLogs = true
+  statTypeCode = "vm"
+}

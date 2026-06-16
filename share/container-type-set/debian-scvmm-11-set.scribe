@@ -1,0 +1,6 @@
+resource "container-type-set" "debian-scvmm-11-set" {
+  code = "debian-scvmm-11-set"
+  uuid = "b341b417-9fad-47eb-8e6d-10e91e2d0b9f"
+  dynamicCount = true
+  workloadType = { code = "debian-scvmm-11" }
+}

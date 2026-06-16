@@ -1,0 +1,7 @@
+resource "container-type-set" "vapp-debian-8.8-set" {
+  code = "vapp-debian-8.8-set"
+  uuid = "7054d709-d43e-4317-9d5e-1ed0fbc66ee6"
+  category = "debian"
+  dynamicCount = true
+  workloadType = { code = "vapp-debian-8.8" }
+}

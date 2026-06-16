@@ -1,0 +1,18 @@
+resource "container-type" "debian-scvmm-12" {
+  code = "debian-scvmm-12"
+  name = "Debian 12"
+  uuid = "a0b47f75-653b-476a-b9de-4caf19665ec4"
+  actions = [ { code = "generic-remove-node" } ]
+  backupType = "scvmmSnapshot"
+  checkTypeCode = "containerCheck"
+  containerPorts = [ { code = "debian.22" } ]
+  containerVersion = "12"
+  logTypeCode = "debian"
+  mountPoint = "/morpheus"
+  osType = { code = "debian.12.64" }
+  provisionType = { code = "scvmm" }
+  serverType = "vm"
+  shortName = "debian"
+  showServerLogs = true
+  statTypeCode = "vm"
+}

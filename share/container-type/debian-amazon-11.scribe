@@ -1,0 +1,18 @@
+resource "container-type" "debian-amazon-11" {
+  code = "debian-amazon-11"
+  name = "Debian 11"
+  uuid = "ff3b209a-ec88-44d9-9e2b-2447c1fed284"
+  actions = [ { code = "generic-remove-node" } ]
+  backupType = "amazonSnapshot"
+  checkTypeCode = "containerCheck"
+  containerPorts = [ { code = "debian.22" } ]
+  containerVersion = "11"
+  logTypeCode = "debian"
+  mountPoint = "/morpheus"
+  osType = { code = "debian.11.64" }
+  provisionType = { code = "amazon" }
+  serverType = "vm"
+  shortName = "debian"
+  showServerLogs = true
+  statTypeCode = "vm"
+}

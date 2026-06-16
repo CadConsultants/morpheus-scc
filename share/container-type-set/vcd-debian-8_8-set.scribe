@@ -1,0 +1,7 @@
+resource "container-type-set" "vcd-debian-8.8-set" {
+  code = "vcd-debian-8.8-set"
+  uuid = "8189f93b-9a67-45d5-bbec-c10bf9befc66"
+  category = "debian"
+  dynamicCount = true
+  workloadType = { code = "vcd-debian-8.8" }
+}

@@ -1,0 +1,18 @@
+resource "container-type" "debian-nutanix-11" {
+  code = "debian-nutanix-11"
+  name = "Debian 11"
+  uuid = "da7dbcca-3554-4b04-8d18-e341469fc2c9"
+  actions = [ { code = "generic-remove-node" } ]
+  backupType = "nutanixSnapshot"
+  checkTypeCode = "containerCheck"
+  containerPorts = [ { code = "debian.22" } ]
+  containerVersion = "11"
+  logTypeCode = "debian"
+  mountPoint = "/morpheus"
+  osType = { code = "debian.11.64" }
+  provisionType = { code = "nutanix" }
+  serverType = "vm"
+  shortName = "debian"
+  showServerLogs = true
+  statTypeCode = "vm"
+}

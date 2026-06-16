@@ -1,0 +1,18 @@
+resource "account-integration" "ansible-ssh" {
+  name = "ansible-ssh"
+  uuid = "ed4ca0c7-f7fc-47a5-802d-96d336fcf8d9"
+  config = {
+    ansibleCommandBus = null
+    ansibleGalaxyEnabled = "on"
+    ansibleGroupVars = "group_vars"
+    ansibleHostVars = "host_vars"
+    ansiblePlaybooks = "playbooks"
+    ansibleRoles = "roles"
+    ansibleVerbose = "on"
+    cacheEnabled = null
+    defaultBranch = "main"
+  }
+  integrationType = { code = "ansible" }
+  serviceUrl = "git@github.com:ChrisADavis/morphdemo.git"
+  type = "ansible"
+}

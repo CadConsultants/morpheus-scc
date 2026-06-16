@@ -1,0 +1,6 @@
+resource "container-type-set" "debian-openstack-12-set" {
+  code = "debian-openstack-12-set"
+  uuid = "653507a5-0987-40b5-8416-6e37dfe8210d"
+  dynamicCount = true
+  workloadType = { code = "debian-openstack-12" }
+}

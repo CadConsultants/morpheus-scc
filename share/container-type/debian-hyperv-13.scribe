@@ -1,0 +1,18 @@
+resource "container-type" "debian-hyperv-13" {
+  code = "debian-hyperv-13"
+  name = "Debian 13"
+  uuid = "ad10c4e8-84fc-4cd1-a794-f21ec78ad841"
+  actions = [ { code = "generic-remove-node" } ]
+  backupType = "hypervSnapshot"
+  checkTypeCode = "containerCheck"
+  containerPorts = [ { code = "debian.22" } ]
+  containerVersion = "13"
+  logTypeCode = "debian"
+  mountPoint = "/morpheus"
+  osType = { code = "debian.13.64" }
+  provisionType = { code = "hyperv" }
+  serverType = "vm"
+  shortName = "debian"
+  showServerLogs = true
+  statTypeCode = "vm"
+}

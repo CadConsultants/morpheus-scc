@@ -1,0 +1,22 @@
+resource "container-type" "esxi-debian-13" {
+  code = "esxi-debian-13"
+  name = "Debian 13"
+  uuid = "3707acb9-da04-41f6-a8a1-d0c8980aeb72"
+  category = "debian"
+  actions = [ { code = "generic-remove-node" } ]
+  backupType = "esxiSnapshot"
+  checkTypeCode = "containerCheck"
+  cloneType = "debian"
+  containerPorts = [ { code = "debian.22" } ]
+  containerVersion = "13"
+  imageCode = "morpheus debian 13"
+  logTypeCode = "debian"
+  mountLogs = "/var/log"
+  osType = { code = "debian.13.64" }
+  providerType = "esxi"
+  provisionType = { code = "esxi" }
+  serverType = "vm"
+  shortName = "debian"
+  showServerLogs = true
+  statTypeCode = "vm"
+}

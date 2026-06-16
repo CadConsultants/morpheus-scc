@@ -1,0 +1,128 @@
+resource "catalog-item-type" "test_catalogue" {
+  code = "test_catalogue"
+  name = "Test"
+  uuid = "584e5a2e-7a82-4dd9-a5b4-28f05f510e30"
+  config = {
+    name = "test-vm1"
+    backup = {
+      backupJob = {
+        retentionCount = null
+        scheduleTypeId = "2"
+        syntheticFullEnabled = true
+        syntheticFullSchedule = "2"
+      }
+      createBackup = true
+      jobAction = "new"
+      providerBackupType = 13
+      veeamManagedServer = ""
+    }
+    cloud = { name = "SCC HVM Cloud", id = 1 }
+    config = {
+      affinityGroup = ""
+      attachVirtIODrivers = false
+      biosHostMode = false
+      createUser = true
+      disableGraphics = false
+      expose = 8080
+      imageId = 232
+      isEC2 = false
+      isVpcSelectable = true
+      kvmHostId = null
+      nestedVirtualization = false
+      noAgent = false
+      poolProviderType = "mvm"
+      provisionPoweredOff = false
+      qemuArgs = null
+      resourcePoolId = "pool-1"
+      secureBoot = false
+      securityId = null
+      tpm = false
+      uefi = false
+      userData = null
+    }
+    configEnabled = true
+    copies = 1
+    defaultExpandAdvanced = false
+    environment = "4"
+    group = { name = "All Clouds", id = "1" }
+    hasImage = true
+    hideLock = true
+    hostName = "test-vm1"
+    imageName = "Windows 2022 ISO"
+    instance = {
+      configGroup = null
+      configRole = null
+      userGroup = { id = "" }
+    }
+    layout = { code = "mvm-1.0-single", id = 32 }
+    networkInterfaces = [
+      {
+        network = {
+          hasPool = true
+          id = "network-12"
+          idName = "Management"
+          pool = { name = "Mgmt Pool", id = 1 }
+        }
+        networkInterfaceTypeId = 10
+        networkInterfaceTypeIdName = "Virt IO"
+        primaryInterface = true
+        showNetworkDhcpLabel = false
+        showNetworkPoolLabel = true
+      }
+    ]
+    plan = { code = "kvm-vm-2048", id = 21 }
+    showScale = false
+    storageControllers = [
+      {
+        name = "VIRTIO 0"
+        category = "virtio"
+        active = true
+        busNumber = "0"
+        displayOrder = 1
+        editable = false
+        id = 1
+        maxDevices = 24
+        removable = false
+        reservedUnitNumber = -1
+        typeId = 9
+        typeName = "VirtIO Block"
+        unitNumber = null
+      },
+      {
+        name = "SATA 0"
+        category = "sata"
+        active = true
+        busNumber = "0"
+        displayOrder = 2
+        editable = false
+        id = 2
+        maxDevices = 6
+        removable = false
+        reservedUnitNumber = -1
+        typeId = 8
+        typeName = "SATA"
+        unitNumber = null
+      }
+    ]
+    type = "mvm"
+    version = "1.0"
+    volumes = [
+      {
+        name = "root"
+        controllerMountPoint = "1:0:9:0"
+        datastoreId = 21
+        maxStorage = 21474836480
+        readonlyName = false
+        rootVolume = true
+        size = 20
+        storageProfile = "kvm-cache-none"
+        storageType = 1
+        volumeCustomizable = true
+      }
+    ]
+  }
+  dateCreated = "2026-06-15T16:29:36.000Z"
+  enabled = false
+  lastUpdated = "2026-06-15T16:29:36.000Z"
+  refType = "InstanceType"
+}

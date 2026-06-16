@@ -1,0 +1,18 @@
+resource "container-type" "debian-huawei-12" {
+  code = "debian-huawei-12"
+  name = "Debian 12"
+  uuid = "dd09a58e-a471-42bd-b39b-13087f2de237"
+  actions = [ { code = "generic-remove-node" } ]
+  backupType = "huaweiSnapshot"
+  checkTypeCode = "containerCheck"
+  containerPorts = [ { code = "debian.22" } ]
+  containerVersion = "12"
+  logTypeCode = "debian"
+  mountPoint = "/morpheus"
+  osType = { code = "debian.12.64" }
+  provisionType = { code = "huawei" }
+  serverType = "vm"
+  shortName = "debian"
+  showServerLogs = true
+  statTypeCode = "vm"
+}

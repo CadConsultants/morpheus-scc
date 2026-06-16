@@ -1,0 +1,22 @@
+resource "container-type" "vmware-debian-12" {
+  code = "vmware-debian-12"
+  name = "Debian 12"
+  uuid = "d6527164-eb89-4f15-a6e7-1aa765accf42"
+  category = "debian"
+  actions = [ { code = "generic-remove-node" } ]
+  backupType = "vmwareSnapshot"
+  checkTypeCode = "containerCheck"
+  cloneType = "debian"
+  containerPorts = [ { code = "debian.22" } ]
+  containerVersion = "12"
+  imageCode = "morpheus debian 12"
+  logTypeCode = "debian"
+  mountLogs = "/var/log"
+  osType = { code = "debian.12.64" }
+  providerType = "vmware"
+  provisionType = { code = "vmware" }
+  serverType = "vm"
+  shortName = "debian"
+  showServerLogs = true
+  statTypeCode = "vm"
+}

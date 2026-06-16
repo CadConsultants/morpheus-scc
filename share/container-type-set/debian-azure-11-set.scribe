@@ -1,0 +1,6 @@
+resource "container-type-set" "debian-azure-11-set" {
+  code = "debian-azure-11-set"
+  uuid = "c6e8404b-2db9-481f-aab9-e0ce3a5cf69d"
+  dynamicCount = true
+  workloadType = { code = "debian-azure-11" }
+}

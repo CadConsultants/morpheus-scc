@@ -1,0 +1,21 @@
+resource "container-type" "vapp-debian-8.8" {
+  code = "vapp-debian-8.8"
+  name = "Debian 8.8"
+  uuid = "d3ed00af-186b-4f5a-acaa-a29e86d5d53f"
+  category = "debian"
+  actions = [ { code = "generic-remove-node" } ]
+  backupType = "vcdSnapshot"
+  checkTypeCode = "containerCheck"
+  cloneType = "debian"
+  containerPorts = [ { code = "ubuntu.22" } ]
+  containerVersion = "8.8"
+  logTypeCode = "debian"
+  mountLogs = "/var/log"
+  providerType = "vcd"
+  provisionType = { code = "vcd.vapp" }
+  serverType = "vm"
+  shortName = "debian"
+  showServerLogs = true
+  statTypeCode = "vm"
+  virtualImage = { code = "vcd.image.morpheus.debian-8_8.ovf" }
+}

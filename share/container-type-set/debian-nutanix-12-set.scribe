@@ -1,0 +1,6 @@
+resource "container-type-set" "debian-nutanix-12-set" {
+  code = "debian-nutanix-12-set"
+  uuid = "e9f32216-ab67-4f9d-9a53-1811ae3e48fa"
+  dynamicCount = true
+  workloadType = { code = "debian-nutanix-12" }
+}

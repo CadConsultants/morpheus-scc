@@ -1,0 +1,6 @@
+resource "container-type-set" "debian-huawei-12-set" {
+  code = "debian-huawei-12-set"
+  uuid = "c3685a8e-3c1f-417b-842f-fb13add44d38"
+  dynamicCount = true
+  workloadType = { code = "debian-huawei-12" }
+}

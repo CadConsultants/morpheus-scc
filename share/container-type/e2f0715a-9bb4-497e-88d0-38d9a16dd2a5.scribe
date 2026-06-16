@@ -1,0 +1,15 @@
+resource "container-type" "e2f0715a-9bb4-497e-88d0-38d9a16dd2a5" {
+  code = "e2f0715a-9bb4-497e-88d0-38d9a16dd2a5"
+  name = "FortiGate KVM Node"
+  uuid = "18222459-0e37-45c1-9bde-5bc3510f45ef"
+  containerVersion = "7.6.6"
+  entryPoint = ""
+  logTypeCode = "vm"
+  provisionType = { code = "kvm" }
+  repositoryImage = ""
+  serverType = "vm"
+  shortName = "fortigate-kvm"
+  showServerLogs = true
+  statTypeCode = "vm"
+  virtualImage = { uuid = "0df32492-5402-406e-9935-b2cbb845c791" }
+}

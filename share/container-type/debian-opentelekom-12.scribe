@@ -1,0 +1,18 @@
+resource "container-type" "debian-opentelekom-12" {
+  code = "debian-opentelekom-12"
+  name = "Debian 12"
+  uuid = "df261bc5-0523-4e6e-b1d7-4c28a6f93e35"
+  actions = [ { code = "generic-remove-node" } ]
+  backupType = "opentelekomSnapshot"
+  checkTypeCode = "containerCheck"
+  containerPorts = [ { code = "debian.22" } ]
+  containerVersion = "12"
+  logTypeCode = "debian"
+  mountPoint = "/morpheus"
+  osType = { code = "debian.12.64" }
+  provisionType = { code = "opentelekom" }
+  serverType = "vm"
+  shortName = "debian"
+  showServerLogs = true
+  statTypeCode = "vm"
+}

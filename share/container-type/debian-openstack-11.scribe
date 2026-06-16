@@ -1,0 +1,18 @@
+resource "container-type" "debian-openstack-11" {
+  code = "debian-openstack-11"
+  name = "Debian 11"
+  uuid = "8ab3f672-6245-465b-915f-eb11ad10c3d0"
+  actions = [ { code = "generic-remove-node" } ]
+  backupType = "openstackSnapshot"
+  checkTypeCode = "containerCheck"
+  containerPorts = [ { code = "debian.22" } ]
+  containerVersion = "11"
+  logTypeCode = "debian"
+  mountPoint = "/morpheus"
+  osType = { code = "debian.11.64" }
+  provisionType = { code = "openstack" }
+  serverType = "vm"
+  shortName = "debian"
+  showServerLogs = true
+  statTypeCode = "vm"
+}

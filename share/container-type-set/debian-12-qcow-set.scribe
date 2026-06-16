@@ -1,0 +1,6 @@
+resource "container-type-set" "debian-12-qcow-set" {
+  code = "debian-12-qcow-set"
+  uuid = "5eef0e29-ff5c-4f26-a4a2-1712af291361"
+  dynamicCount = true
+  workloadType = { code = "debian-12-qcow" }
+}

@@ -1,0 +1,20 @@
+resource "container-type" "debian-digitalocean-11.0" {
+  code = "debian-digitalocean-11.0"
+  name = "Debian 11.0"
+  uuid = "27b63a1f-3cd1-4280-85df-ca68e3c112ad"
+  category = "debian"
+  actions = [ { code = "generic-remove-node" } ]
+  backupType = "digitaloceanSnapshot"
+  checkTypeCode = "containerCheck"
+  containerPorts = [ { code = "debian.22" } ]
+  containerVersion = "11"
+  entryPoint = "/entrypoint.sh"
+  logTypeCode = "debian"
+  mountPoint = "/morpheus"
+  providerType = "digitalocean"
+  provisionType = { code = "digitalocean" }
+  serverType = "vm"
+  shortName = "debian"
+  statTypeCode = "vm"
+  virtualImage = { code = "digitalocean.image.morpheus.debian.11" }
+}

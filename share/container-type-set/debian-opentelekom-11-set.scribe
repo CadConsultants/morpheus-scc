@@ -1,0 +1,6 @@
+resource "container-type-set" "debian-opentelekom-11-set" {
+  code = "debian-opentelekom-11-set"
+  uuid = "be51433a-417d-4a28-b8b7-4b9ae44c647a"
+  dynamicCount = true
+  workloadType = { code = "debian-opentelekom-11" }
+}
